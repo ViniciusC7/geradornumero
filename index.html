@@ -1,80 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Gerador de Números Aleatórios</title>
     <style>
-      h1 {
-        text-align: center;
-        margin-top: 50px;
-        font-family: sans-serif;
-      }
-      
-      form {
+      .container {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-top: 50px;
       }
-      
-      form input[type="number"] {
-        width: 150px;
-        height: 30px;
-        font-size: 20px;
+      h1 {
+        font-size: 32px;
         margin-bottom: 20px;
-        text-align: center;
       }
-      
-      button {
-        width: 200px;
-        height: 40px;
-        font-size: 20px;
-        margin-top: 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
+      input[type="number"] {
+        font-size: 18px;
+        padding: 10px;
+        margin: 10px 0;
         border-radius: 5px;
-        cursor: pointer;
+        border: 1px solid gray;
       }
-      
-      ul {
-        list-style: none;
-        padding: 0;
-        margin-top: 50px;
-        text-align: center;
-      }
-      
-      li {
-        font-size: 20px;
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        background-color: lightgray;
         margin-top: 20px;
+      }
+      .result {
+        margin-top: 20px;
+        font-size: 24px;
       }
     </style>
   </head>
   <body>
-    <h1>Gerador de Números Aleatórios</h1>
-    <form>
-      <p>Quantidade de números: <input type="number" id="qty"></p>
-      <p>Número máximo: <input type="number" id="max"></p>
-      <button id="generate-btn">Gerar Números</button>
-    </form>
-    <ul id="numbers-list"></ul>
-    
+    <div class="container">
+      <h1>Gerador de Números Aleatórios</h1>
+      <input type="number" id="quantity" placeholder="Quantidade de Números">
+      <button id="generate">Gerar Números</button>
+      <div class="result"></div>
+    </div>
     <script>
-      const generateBtn = document.getElementById("generate-btn");
-      const numbersList = document.getElementById("numbers-list");
-      const qtyInput = document.getElementById("qty");
-      const maxInput = document.getElementById("max");
-      
+      const generateBtn = document.getElementById("generate");
+      const quantityInput = document.getElementById("quantity");
+      const resultDiv = document.querySelector(".result");
+
       generateBtn.addEventListener("click", function() {
-        numbersList.innerHTML = "";
-        const qty = parseInt(qtyInput.value);
-        const max = parseInt(maxInput.value);
-        
-        for (let i = 0; i < qty; i++) {
-          const randomNumber = Math.floor(Math.random() * max) + 1;
-          const li = document.createElement("li");
-          li.textContent = randomNumber;
-          numbersList.appendChild(li);
+        let quantity = quantityInput.value;
+        let numbers = [];
+
+        for (let i = 0; i < quantity; i++) {
+          numbers.push(Math.floor(Math.random() * 10) + 1);
         }
+
+        resultDiv.innerHTML = `Resultado: ${numbers.join(", ")}`;
       });
     </script>
   </body>
