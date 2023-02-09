@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gerador de Números Aleatórios</title>
+    <style>
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-family: sans-serif;
+      }
+      
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+      
+      form input[type="number"] {
+        width: 150px;
+        height: 30px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      button {
+        width: 200px;
+        height: 40px;
+        font-size: 20px;
+        margin-top: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 50px;
+        text-align: center;
+      }
+      
+      li {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gerador de Números Aleatórios</h1>
+    <form>
+      <p>Quantidade de números: <input type="number" id="qty"></p>
+      <p>Número máximo: <input type="number" id="max"></p>
+      <button id="generate-btn">Gerar Números</button>
+    </form>
+    <ul id="numbers-list"></ul>
+    
+    <script>
+      const generateBtn = document.getElementById("generate-btn");
+      const numbersList = document.getElementById("numbers-list");
+      const qtyInput = document.getElementById("qty");
+      const maxInput = document.getElementById("max");
+      
+      generateBtn.addEventListener("click", function() {
+        numbersList.innerHTML = "";
+        const qty = parseInt(qtyInput.value);
+        const max = parseInt(maxInput.value);
+        
+        for (let i = 0; i < qty; i++) {
+          const randomNumber = Math.floor(Math.random() * max) + 1;
+          const li = document.createElement("li");
+          li.textContent = randomNumber;
+          numbersList.appendChild(li);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+#app {
+    text-align: center;
+    padding: 1em;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 1em;
+  }
+  
+  input[type="number"] {
+    width: 5em;
+  }
+  
+  button {
+    padding: 1em 2em;
+    border: none;
+    border-radius: 4px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #randoms {
+    font-size: 1.5em;
+    margin-top: 1em;
+  }
+  
