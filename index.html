@@ -6,54 +6,55 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 50px;
+        justify-content: center;
+        height: 100vh;
       }
       h1 {
-        font-size: 32px;
+        font-size: 36px;
         margin-bottom: 20px;
       }
       input[type="number"] {
-        font-size: 18px;
+        font-size: 24px;
         padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid gray;
+        margin-bottom: 20px;
       }
       button {
-        padding: 10px 20px;
-        font-size: 18px;
-        border-radius: 5px;
-        border: none;
-        background-color: lightgray;
-        margin-top: 20px;
-      }
-      .result {
-        margin-top: 20px;
         font-size: 24px;
+        padding: 10px 20px;
+        background-color: deepskyblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .output {
+        font-size: 36px;
+        margin-top: 20px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Gerador de Números Aleatórios</h1>
-      <input type="number" id="quantity" placeholder="Quantidade de Números">
-      <button id="generate">Gerar Números</button>
-      <div class="result"></div>
+      <h1>Gerador de números aleatórios</h1>
+      <input type="number" id="quantity" value="1" min="1">
+      <button id="generate-btn">Gerar</button>
+      <div class="output" id="output"></div>
     </div>
     <script>
-      const generateBtn = document.getElementById("generate");
-      const quantityInput = document.getElementById("quantity");
-      const resultDiv = document.querySelector(".result");
-
-      generateBtn.addEventListener("click", function() {
-        let quantity = quantityInput.value;
+      const generateBtn = document.querySelector('#generate-btn');
+      const output = document.querySelector('#output');
+      const quantityInput = document.querySelector('#quantity');
+      
+      generateBtn.addEventListener('click', () => {
+        let quantity = Number(quantityInput.value);
         let numbers = [];
-
+        
         for (let i = 0; i < quantity; i++) {
-          numbers.push(Math.floor(Math.random() * 10) + 1);
+          let randomNumber = Math.floor(Math.random() * 99) + 1;
+          numbers.push(randomNumber);
         }
-
-        resultDiv.innerHTML = `Resultado: ${numbers.join(", ")}`;
+        
+        output.innerHTML = numbers.join(" - ");
       });
     </script>
   </body>
